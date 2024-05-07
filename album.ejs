@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= album.title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1><%= album.title %></h1>
+    <h2><%= album.artist %></h2>
+    <h3><%= album.genre %></h3>
+    <% album.reviews.forEach(function(review) { %>
+      <div class="review">
+        <p><%= review.user %>: <%= review.review %></p>
+        <p>Rating: <%= review.rating %></p>
+      </div>
+    <% }); %>
+    <form id="review-form" action="/album/<%= album._id %>/review" method="post">
+      <textarea id="review-input" name="review" placeholder="Write your review here"></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  </div>
+  <script src="/javascripts/main.js"></script>
+</body>
+</html>
